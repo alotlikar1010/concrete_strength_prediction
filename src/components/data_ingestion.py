@@ -6,6 +6,9 @@ from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
 from sklearn.model_selection import train_test_split
+#from src.components.data_transformation import DataTransformation
+from data_transformation import DataTransformation
+
 @dataclass
 class DataIngestionConfig:
     train_data_path = os.path.join("artifacts/data_ingestion",'train.csv')
@@ -26,7 +29,9 @@ class DataIngestion:
             logging.info("Data Reading starts here:")
             data = pd.read_csv(os.path.join("notebook/dataset","concrete_data.csv"))
             logging.info("Data Reading Completed:")
-            
+            # remove duplicate value
+            data.drop_duplicates(inplace=True)
+
             os.makedirs(os.path.dirname(self.ingestion_Config.raw_data_path),exist_ok=True)
             data.to_csv(self.ingestion_Config.raw_data_path, index=False)
             logging.info("Data splited into train and test")
@@ -53,5 +58,6 @@ class DataIngestion:
 if __name__ =="__main__":
     obj = DataIngestion()
     train_data_path , test_data_path = obj.initiate_data_ingestion()
-    #print(train_data_path)
-    #print(test_data_path)
+
+    data_transformation = DataTransformation()
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data_path , test_data_path)
