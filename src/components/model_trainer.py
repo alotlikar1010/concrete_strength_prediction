@@ -72,7 +72,7 @@ class ModelTrainer:
                 },
                 "Linear Regression":{},
                 "XGBRegressor":{
-                    'learning_rate':[0.1,0.2,0.5,0.8,1],
+                    'learning_rate':[.1,.01,.05,.001],
                     'n_estimators': [8,16,32,64,128,256]
                 },
                 "CatBoosting Regressor":{

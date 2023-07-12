@@ -103,7 +103,7 @@ class DataTransformation:
             target_feature_test_data = test_data[target_column]
 
 
-            # Apply transfpormation on our train data and test data
+            # Apply transformation on our train data and test data
             input_train_arr = preprocess_obj.fit_transform(input_feature_train_data)
             input_test_arr = preprocess_obj.transform(input_feature_test_data)
 
