@@ -30,7 +30,7 @@ class DataTransformation:
             logging.info("Data Transformation started")
 
             numerical_features = ['cement', 'blast_furnace_slag', 'fly_ash', 'water', 'superplasticizer',
-        'coarse_aggregate', 'fine_aggregate ', 'age']
+        'coarse_aggregate', 'fine_aggregate', 'age']
             
             num_pipeline = Pipeline(
                 steps=[
@@ -72,9 +72,9 @@ class DataTransformation:
         try:
             train_data = pd.read_csv(train_path)
             test_data = pd.read_csv(test_path)
-
+            #column name fixed
             numerical_features = ['cement', 'blast_furnace_slag', 'fly_ash', 'water', 'superplasticizer',
-        'coarse_aggregate', 'fine_aggregate ', 'age']
+        'coarse_aggregate', 'fine_aggregate', 'age']
             
            #handling outlier starts here
             
