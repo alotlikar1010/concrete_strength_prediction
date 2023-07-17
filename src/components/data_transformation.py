@@ -29,19 +29,19 @@ class DataTransformation:
         
             logging.info("Data Transformation started")
 
-            numerical_features = ['cement', 'blast_furnace_slag', 'fly_ash', 'water', 'superplasticizer',
-        'coarse_aggregate', 'fine_aggregate', 'age']
+           # numerical_features = ['cement', 'blast_furnace_slag', 'fly_ash', 'water', 'superplasticizer','coarse_aggregate', 'fine_aggregate', 'age']
             
-            num_pipeline = Pipeline(
+            preprocessor = Pipeline(
                 steps=[
                     ("imputer",SimpleImputer(strategy='median')),
+                    
                     ("scaler", StandardScaler())
                 ]
             )
 
-            preprocessor = ColumnTransformer([
-                    ("num_pipeline", num_pipeline, numerical_features)
-                ])
+            # preprocessor = ColumnTransformer([
+            #         ("num_pipeline", num_pipeline, numerical_features)
+            #     ])
 
             return preprocessor
 
@@ -64,7 +64,7 @@ class DataTransformation:
             return df
 
         except Exception as e:
-            logging.info("Outluers handling error")
+            logging.info("Outliers handling error")
             raise CustomException(e, sys)
         
 
@@ -73,8 +73,7 @@ class DataTransformation:
             train_data = pd.read_csv(train_path)
             test_data = pd.read_csv(test_path)
             #column name fixed
-            numerical_features = ['cement', 'blast_furnace_slag', 'fly_ash', 'water', 'superplasticizer',
-        'coarse_aggregate', 'fine_aggregate', 'age']
+            numerical_features = ['age' ,'water', 'superplasticizer']
             
            #handling outlier starts here
             
