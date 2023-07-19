@@ -1,8 +1,8 @@
 from flask import Flask,request,render_template
 from src.pipeline.prediction_pipeline import CustomData,PredictPipeline
 
-app = Flask(__name__)
-
+application = Flask(__name__)
+app = application
 #progress
 
 @app.route('/')
@@ -35,4 +35,4 @@ def predictdata():
     
 
 if __name__=="__main__":       
-    app.run(debug=True) 
+    app.run(host="0.0.0.0")
