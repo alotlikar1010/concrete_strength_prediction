@@ -4,7 +4,5 @@ numpy
 dill
 scikit-learn
 seaborn
-xgboost
-catboost
 Flask
 -e .
